@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Service History - Blockchain</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+</head>
+<body>
+    <!-- Spinner overlay -->
+    <div id="loading-spinner" class="spinner-overlay hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container">
+        <h1> Service History - Blockchain</h1>
+
+        <!-- Formularz dodawania naprawy -->
+        <section class="form-section">
+            <h2>Add repair</h2>
+            <label for="device_id">Device ID:</label>
+            <input type="text" id="device_id" placeholder="ex. PC-23451">
+
+            <label for="repair_description">Repair Description:</label>
+            <input type="text" id="repair_description" placeholder="ex. Adding 16GB of RAM">
+
+            <label for="service_sign">Service:</label>
+            <input type="text" id="service_sign" placeholder="ex. Apple Service">
+
+            <button onclick="addBlock()">➕ Add block</button>
+        </section>
+
+        <!-- Sprawdzenie reputacji serwisu -->
+        <section class="form-section">
+            <h2>Check service reputation</h2>
+            <label for="check_service">Servis ID:</label>
+            <input type="text" id="check_service" placeholder="ex. Apple Service">
+            <button onclick="checkReputation()">🔍 Check</button>
+            <p id="reputation_result"></p>
+        </section>
+
+        <!-- Historia napraw -->
+        <section class="history-section">
+            <h2>📜 Repair Hisotry</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">#</th>
+                        <th>Device ID</th>
+                        <th>Repair Description</th>
+                        <th>Service</th>
+                        <th>Timestamp</th>
+                        <th>Hash</th>
+                    </tr>
+                </thead>
+                <tbody id="blocks_table"></tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>
+
